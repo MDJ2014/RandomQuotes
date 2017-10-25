@@ -1,18 +1,19 @@
-
 $(document).ready(function() {
+
+  //display an opening quote
+
 $("#quote-box").html("<p class='quote'>He wrapped himself in quotations - as a beggar would enfold himself in the purple of Emperors</p>" +"<p class='source'>  Rudyard Kipling  <span class='citation'> Many Inventions </span> </p>");
 $("#tag").html("Quotes");
 
+//set a timer to automatically display a new quote after 30 seconds.
 setInterval(function() {
-    upDate();
+    printQuote();
 }, 30000);
 });
 
+// set a var to hold an array of quote objects to be selected from
 
-
-
-
-const quotes = [
+var quotes = [
 
 {
 quote:"Creativity is inteligence having fun.",
@@ -105,59 +106,47 @@ tag:"political"
 ];
 
 
-
 //get a random number that has not been used and pass that to getRandomQuote to fetch a quote
-//viewed will hold the random numbers that have been generated
-let viewed=[];
+//viewed will hold the random quotes that have been selected
+var viewed=[];
 
-//helper function to search the array
-isInArray=(array,search)=>{
-   return array.indexOf(search) >= 0;
-}
 
-//upDate will generate a random number, push it into the viewed array and then search the array
-//the next time it is called to make sure not to choose the same quote twice.
+//getRandomQuote will generate a random number, push the quote object into the viewed array.
 
-upDate = ()=>{
+getRandomQuote = ()=>{
 //vars for the random number geneerator
   let num = quotes.length;
   let max = Math.floor(num-1);
   let min = Math.ceil(0);
   let randNum = Math.floor(Math.random() * (max - 0 +1) )+ 0;
 
-//first check if the viewed array is the same length as the quotes array
+//get a quote based on the random number used as the index
+   let randQuote = quotes[randNum];
 
-if(viewed.length < num){
+//add the quote to the viewed array and take it out of the quotes array
+   viewed.push(randQuote);
+   quotes.splice(randNum, 1);
 
-//Next check if the randNum is already in the array. If so, get another random number.
-//otherwise, push it into the array and send the number to getRandomQuote to choose a quote.
+//first check if the quotes array has been emptied: equal to 0.
+//if it is, add all the quotes back to it from the viewed array and empty the viewed array.
+//return the random quote.
 
-if(isInArray(viewed,randNum)){
-   upDate();
-
+if(quotes.length === 0){
+     quotes = viewed;
+     viewed = [];
+        return randQuote;
   }else{
-    viewed.push(randNum);
-    getRandomQuote(randNum);
+        return randQuote;
   }
-//if the the two arrays are the same length, clear the viewed array and call the upDate function again to start over.
-}else if(viewed.length >= num){
-  viewed=[];
-  upDate();
-}
-
-}
-
-//choose the quote according to the random Number
-getRandomQuote = (num) => {
-var randQuote = quotes[num];
-printQuote(randQuote);
 }
 
 //display the chosen quote
 
-printQuote = (randQuote) =>{
+printQuote = () =>{
 
+//get the random quote by calling getRandomQuote
 
+let randQuote = getRandomQuote();
 
 //vars for linking to quote properties
 let dispQuote = randQuote.quote;
@@ -170,47 +159,47 @@ let dispTag = randQuote.tag;
 
 
 //vars for getting a random color
-     var cR = Math.floor((Math.random() * 256));
-     var cG = Math.floor((Math.random() * 256));
-     var cB = Math.floor((Math.random() * 256));
+     let cR = Math.floor((Math.random() * 256));
+     let cG = Math.floor((Math.random() * 256));
+     let cB = Math.floor((Math.random() * 256));
 
 //jquery statement to set the "main" tag's randomly generated background-color
    $("main").css("background-color", "rgb(" + cR + "," + cG + "," + cB + ")");
 
 //modify the rendered html based on what properties are populated
+
+
 $("#tag").html(dispTag);
 
-if(dispCite === "" && dispYear === ""){
+//check which properties exist to decide how to display
 
-  dispBox.innerHTML = " <p class='quote'>" + dispQuote + "</p>" +
+if(!randQuote.hasOwnProperty('citation') && !randQuote.hasOwnProperty('year')){
+
+   dispBox.innerHTML = " <p class='quote'>" + dispQuote + "</p>" +
     "<p class='source'>" + dispSource +
-   "</p>";
+    "</p>";
 
-
-
-}else if(dispCite === "" && dispYear !==""){
+}else if(!randQuote.hasOwnProperty('citation') && randQuote.hasOwnProperty('year')){
 
     dispBox.innerHTML = "  <p class='quote'>" + dispQuote + "</p>" +
-  "<p class='source'>" + dispSource +
-  "<span class='year'>" + dispYear + "</span>" +
-   "</p> ";
+      "<p class='source'>" + dispSource +
+      "<span class='year'>" + dispYear + "</span>" +
+       "</p> ";
 
-}else if(dispCite !== "" && dispYear ===""){
+}else if(randQuote.hasOwnProperty('citation') && !randQuote.hasOwnProperty('year')){
+
+      dispBox.innerHTML = " <p class='quote'>" + dispQuote + "</p>" +
+        "<p class='source'>" + dispSource +
+        "<span class='citation'>" + dispCite + "</span>"+
+         "</p>";
+
+}else{
+
     dispBox.innerHTML = " <p class='quote'>" + dispQuote + "</p>" +
     "<p class='source'>" + dispSource +
     "<span class='citation'>" + dispCite + "</span>"+
+      "<span class='year'>" + dispYear + "</span>" +
      "</p>";
-
-}else{
-  dispBox.innerHTML = " <p class='quote'>" + dispQuote + "</p>" +
-  "<p class='source'>" + dispSource +
-  "<span class='citation'>" + dispCite + "</span>"+
-    "<span class='year'>" + dispYear + "</span>" +
-   "</p>";
-
-
-}
-
-
+   }
 
 }

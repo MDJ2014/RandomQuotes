@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>             </title>
-    <meta name="description" content=" ">
+    <title>Random Quote Generator</title>
+    <meta name="description" content="Project 1 TechDegree random quote generator">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,33 +13,31 @@
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <!-- Font Awesome -->
 
     <link href="./styles/css.css" type="text/css" rel="stylesheet">
 
-<!-- document.addEventListener('DOMContentLoaded',function() {
-
-});    -->
-
-
 </head>
+
 <body>
+  
 <div id="container" class="container-fluid">
 
 <header><h1 class="text-center">Random Quotes</h1></header>
 <!-- main is the background box-->
 <main>
-
-  <h3 id="tag"></h3>
+<!-- display quote generate-->
+<h3 id="tag"></h3>
 <!--quote-box is the container for the quotes-->
-<div id="quote-box" class="well">
-
-</div>
+<div id="quote-box" class="well"></div>
 </main>
 
-<button id="loadQuote" class="btn" onclick="upDate();">Show another quote</button>
+<button id="loadQuote" class="btn" onclick="printQuote();">Show another quote</button>
+
+
 </div><!-- close fluid container -->
 </body>
+
+
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Latest compiled JavaScript -->

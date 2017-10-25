@@ -1,4 +1,3 @@
-
 @font-face {
     font-family: 'antipasto_prodemibold';
     src: url('antipastopro-demibold-webfont-webfont.woff2') format('woff2'),
@@ -7,7 +6,6 @@
     font-style: normal;
 
 }
-
 
 
 *{
@@ -84,12 +82,10 @@ main{
   font-style: normal;
 }
 
-
 #container{
   position: relative;
 }
 #loadQuote {
-
   position: relative;
   margin-left: 45%;
   margin-top: -5em;
@@ -102,7 +98,6 @@ main{
   padding: 15px 0;
   transition: .5s ;
 }
-
 
 #loadQuote:hover {
   background-color: rgba(255,255,255,.25);
@@ -119,9 +114,8 @@ main{
   width: 10%;
   margin: auto;
   margin-bottom: 20px;
-
-
 }
+
 @media (max-width: 420px) {
   .quote {
     font-size: 2.5rem;
