@@ -1,0 +1,135 @@
+
+@font-face {
+    font-family: 'antipasto_prodemibold';
+    src: url('antipastopro-demibold-webfont-webfont.woff2') format('woff2'),
+         url('antipastopro-demibold-webfont-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+
+
+*{
+box-sizing: border-box;
+}
+
+body{
+  background-image: url(../resources/grey.png);
+}
+h1{
+  color: DarkSlateGray;
+  font-family: 'antipasto_prodemibold', sans-serif;
+  font-size: 8em;
+}
+main{
+  background-color: LightSlateGray;
+  width: 70%;
+  margin: auto;
+  border-radius: 10px;
+  box-shadow: 1px -1px 1px 1px gray;
+  padding-top: 90px;
+  padding-bottom: 100px;
+}
+#quote-box{
+  width: 70%;
+  margin: auto;
+  border-radius: 10px;
+  padding:60px 0px 10px 40px;
+}
+
+.quote {
+  font-size: 4rem;
+  font-weight: 400;
+  line-height: 1.1;
+  position: relative;
+  margin: 0;
+  padding-bottom: 20px;
+  }
+.quote:before, .quote:after {
+  font-size: 6rem;
+  line-height: 2.5rem;
+  position: absolute;
+}
+.quote:before {
+  content: "“";
+  top: .25em;
+  left: -.5em;
+}
+.quote:after {
+  content: "”";
+  bottom: -.1em;
+  margin-left: .1em;
+  position: absolute;
+}
+.source {
+  font-size: 1.25rem;;
+  letter-spacing: 0.05em;
+  line-height: 1.1;
+  text-align: right;
+  margin-right: 4em;
+}
+.source:before {
+  content: "—";
+}
+.citation {
+  font-style: italic;
+}
+.citation:before {
+  content: ", ";
+  font-style: normal;
+}
+.year:before {
+  content: ", ";
+  font-style: normal;
+}
+
+
+#container{
+  position: relative;
+}
+#loadQuote {
+
+  position: relative;
+  margin-left: 45%;
+  margin-top: -5em;
+  margin-bottom: 20px;
+  width: 12em;
+  border-radius: 4px;
+  border: 2px solid #fff;
+  color: #fff;
+  background-color: #36b55c;
+  padding: 15px 0;
+  transition: .5s ;
+}
+
+
+#loadQuote:hover {
+  background-color: rgba(255,255,255,.25);
+}
+#loadQuote:focus {
+  outline: none;
+}
+#tag{
+  font-size: 4rem;
+  font-weight: 200;
+  line-height: 1.1;
+  font-family: 'antipasto_prodemibold', sans-serif;
+  padding: 0px, 0px, 0px, 0px;
+  width: 10%;
+  margin: auto;
+  margin-bottom: 20px;
+
+
+}
+@media (max-width: 420px) {
+  .quote {
+    font-size: 2.5rem;
+  }
+  .quote:before, .quote:after {
+    font-size: 3rem;
+  }
+  .source {
+    font-size: 1rem;
+  }
+}
